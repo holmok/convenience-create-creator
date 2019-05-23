@@ -1,0 +1,48 @@
+{
+  "name": "{{name}}",
+  "version": "1.0.0",
+  "description": "a simple to generate node projects.",
+  "main": "./lib/index.js",
+  "bin": {
+    "create": "./lib/index.js"
+  },
+  "scripts": {
+    "test": "npm run test:lint && npm run test:integration && npm run test:coverage",
+    "test:unit": "tape tests/unit/*.test.js | tap-spec",
+    "test:integration": "tape ./tests/integration/*.test.js | tap-spec",
+    "test:coverage": "nyc --check-coverage --lines 100 --functions 100 --branches 100 --reporter=html --reporter=text --reporter=text-summary npm run test:unit",
+    "test:lint": "standard ./lib/**/*.js ./tests/**/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/holmok/convenience-create.git"
+  },
+  "keywords": [
+    "node.js",
+    "generator",
+    "create",
+    "templates"
+  ],
+  "author": "christopher holmok <christopher@holmok.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/holmok/convenience-create/issues"
+  },
+  "homepage": "https://github.com/holmok/convenience-create#readme",
+  "devDependencies": {
+    "nyc": "^14.1.1",
+    "sinon": "^7.3.2",
+    "standard": "^12.0.1",
+    "tap-spec": "^5.0.0",
+    "tape": "^4.10.1"
+  },
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "debug": "^4.1.1",
+    "execa": "^1.0.0",
+    "glob": "^7.1.4",
+    "handlebars": "^4.1.2",
+    "inquirer": "^6.3.1",
+    "mkdirp": "^0.5.1"
+  }
+}

@@ -1,0 +1,13 @@
+/node_modules
+/coverage
+/.nyc_output
+/build
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+npm-debug.log*
+package-lock.json
+*.bin
+.vscode
