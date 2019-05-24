@@ -9,7 +9,10 @@ const plan = {
     {
       type: 'input',
       name: 'name',
-      message: 'What is the name of this project:',
+      message: 'What is the name of this creator:',
+      validate (input) {
+        return input.startsWith('created-') || 'name must start with "create-"'
+      },
       default () {
         return Path.basename(process.cwd())
       }
@@ -38,6 +41,12 @@ const plan = {
       type: 'confirm',
       name: 'standard',
       message: `Include ${Chalk.green('linting')} with ${Chalk.yellow('standard')}:`,
+      default: true
+    },
+    {
+      type: 'confirm',
+      name: 'standard',
+      message: `Include an example template:`,
       default: true
     }
   ],
