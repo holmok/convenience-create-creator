@@ -22,15 +22,8 @@ Tape('copy - happy path', (t) => {
 
   const list = [{ to: 'to', from: 'from' }]
 
-  context.utilsMock
-    .expects('toAndFroms')
-    .once()
-    .returns(list)
-
-  context.fsMock
-    .expects('copyFileSync')
-    .once()
-    .returns()
+  context.utilsMock.expects('toAndFroms').once().returns(list)
+  context.fsMock.expects('copyFileSync').once().returns()
 
   const { copy } = require('../../../../lib/tasks/copy')
   copy()

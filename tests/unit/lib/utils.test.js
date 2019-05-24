@@ -35,41 +35,15 @@ Tape('utils - happy path', (t) => {
     { source: 'a', target: 'a', files: 'a' }
   ]
 
-  context.pathMock
-    .expects('join')
-    .thrice()
-    .returns()
-
-  context.pathMock
-    .expects('relative')
-    .twice()
-    .returns()
-
-  context.pathMock
-    .expects('dirname')
-    .twice()
-    .returns()
-
-  context.globMock
-    .expects('sync')
-    .once()
-    .returns(['a', 'b'])
-
-  context.methodsMock
-    .expects('transform')
-    .twice()
-    .returns('a')
-
-  context.fsMock
-    .expects('existsSync')
-    .twice()
+  context.pathMock.expects('join').thrice().returns()
+  context.pathMock.expects('relative').twice().returns()
+  context.pathMock.expects('dirname').twice().returns()
+  context.globMock.expects('sync').once().returns(['a', 'b'])
+  context.methodsMock.expects('transform').twice().returns('a')
+  context.fsMock.expects('existsSync').twice()
     .onCall(0).returns(true)
     .onCall(1).returns(false)
-
-  context.mkdirpMock
-    .expects('sync')
-    .once()
-    .returns()
+  context.mkdirpMock.expects('sync').once().returns()
 
   const { toAndFroms } = Proxyquire('../../../lib/utils', { path: context.path })
   const result = toAndFroms(paths, context.methods.transform)
