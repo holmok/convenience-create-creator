@@ -46,7 +46,7 @@ Tape('utils - happy path', (t) => {
   context.mkdirpMock.expects('sync').once().returns()
 
   const { toAndFroms } = Proxyquire('../../../lib/utils', { path: context.path })
-  const result = toAndFroms(paths, context.methods.transform)
+  toAndFroms(paths, context.methods.transform)
   post(context)
   t.end()
 })
