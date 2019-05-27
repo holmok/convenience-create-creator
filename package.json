@@ -1,6 +1,6 @@
 {
   "name": "@convenience/create-creator",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "a simple to generate node projects.",
   "main": "./lib/index.js",
   "bin": {
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/holmok/convenience-create.git"
+    "url": "git+https://github.com/holmok/convenience-create-creator"
   },
   "keywords": [
     "node.js",
@@ -26,9 +26,9 @@
   "author": "christopher holmok <christopher@holmok.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/holmok/convenience-create/issues"
+    "url": "https://github.com/holmok/convenience-create-creator/issues"
   },
-  "homepage": "https://github.com/holmok/convenience-create#readme",
+  "homepage": "https://github.com/holmok/convenience-create-creator#readme",
   "devDependencies": {
     "nyc": "^14.1.1",
     "proxyquire": "^2.1.0",
