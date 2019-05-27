@@ -11,7 +11,7 @@ function pre () {
   context.utilsMock = sandbox.mock(Utils)
   context.fs = { writeFileSync () {}, readFileSync () {} }
   context.fsMock = sandbox.mock(context.fs)
-  context.handlerbarsMock = sandbox.mock(Handlebars)
+  context.handlebarsMock = sandbox.mock(Handlebars)
 
   return context
 }
@@ -20,7 +20,7 @@ function post (context) {
   context.sandbox.verifyAndRestore()
 }
 
-Tape('copy - happy path', (t) => {
+Tape('template - happy path', (t) => {
   const context = pre()
 
   const list = [{ to: 'to', from: 'from' }]
@@ -28,7 +28,7 @@ Tape('copy - happy path', (t) => {
   context.utilsMock.expects('toAndFroms').once().returns(list)
   context.fsMock.expects('readFileSync').once().returns(Buffer.alloc(0))
   context.fsMock.expects('writeFileSync').once().returns()
-  context.handlerbarsMock.expects('compile').once().returns(() => '')
+  context.handlebarsMock.expects('compile').once().returns(() => '')
 
   const { template } = Proxyquire('../../../../lib/tasks/template', { fs: context.fs })
   template()

@@ -47,7 +47,6 @@ Tape('utils - happy path', (t) => {
 
   const { toAndFroms } = Proxyquire('../../../lib/utils', { path: context.path })
   const result = toAndFroms(paths, context.methods.transform)
-  console.log(result)
   post(context)
   t.end()
 })
