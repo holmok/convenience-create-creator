@@ -1,12 +1,5 @@
-#!/usr/bin/env node
-
+const { run } = require('@convenience/create-creator')
 const Path = require('path')
-const { run } = require('../lib')
-const Chalk = require('chalk')
-const GitUserInfo = require('git-user-info')
-const Os = require('os')
-
-const user = GitUserInfo({ path: Path.join(Os.homedir(), '.gitconfig') })
 
 const plan = {
   queries: [
@@ -29,10 +22,7 @@ const plan = {
     {
       type: 'input',
       name: 'name',
-      message: 'What is the name of this creator?',
-      validate (input) {
-        return input.startsWith('create-') || 'name must start with "create-"'
-      },
+      message: 'What is the name of this library?',
       default () {
         return Path.basename(process.cwd())
       }
@@ -45,56 +35,23 @@ const plan = {
     },
     {
       type: 'input',
-      name: 'username',
-      message: 'Your name?',
-      default: user && user.name ? user.name : ''
-    },
-    {
-      type: 'input',
-      name: 'email',
-      message: 'Your email?',
-      default: user && user.email ? user.email : ''
-    },
-    {
-      type: 'input',
-      name: 'license',
-      message: 'What license?',
-      default: 'MIT'
-    },
-    {
-      type: 'input',
       name: 'repository',
       message: 'Url for the repository for this creator?'
-    },
-    {
-      type: 'confirm',
-      name: 'standard',
-      message: `Include ${Chalk.green('linting')} with ${Chalk.yellow('standard')}?`,
-      default: true
-    },
-    {
-      type: 'confirm',
-      name: 'example',
-      message: `Include an example template?`,
-      default: true
     }
   ],
   actions: [
     {
       type: 'copy',
-      name: 'Copy Files',
+      name: 'copy standard files',
       transform (path, answers) {
         const filename = Path.basename(path)
         const pathname = Path.dirname(path)
-        return Path.join(pathname, filename
-          .replace(/^_/, '.')
-          .replace(/\.hbs$/, ''))
+        return Path.join(pathname, filename.replace(/^_/, '.'))
       },
       files (answers) {
-        const path = answers.example ? 'copy/example' : 'copy/blank'
         return [
           {
-            source: Path.join(__dirname, path),
+            source: Path.join(__dirname, 'copy'),
             target: Path.join(process.cwd(), '.'),
             files: `.${Path.sep}**${Path.sep}*`
           }
@@ -103,7 +60,7 @@ const plan = {
     },
     {
       type: 'template',
-      name: 'Templates',
+      name: 'create files from templates',
       transform (path, answers) {
         const filename = Path.basename(path)
         const pathname = Path.dirname(path)
@@ -123,7 +80,7 @@ const plan = {
     },
     {
       type: 'command',
-      name: 'Commands',
+      name: 'running commands',
       commands (answers) {
         return [
           { cmd: 'npm', args: ['install'] },

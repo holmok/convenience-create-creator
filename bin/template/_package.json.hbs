@@ -7,17 +7,7 @@
     "{{name}}": "./bin/index.js"
   },
   "scripts": {
-    {{#if tape}}
-    {{#if nyc}}
-    "test": "{{#if standard}}npm run test:lint && {{/if}}npm run test:integration && npm run test:coverage",
-    {{else}}
-    "test": "{{#if standard}}npm run test:lint && {{/if}}npm run test:integration && npm run test:unit",
-    {{/if}}
-    "test:unit": "tape tests/unit/lib/*.test.js tests/unit/lib/tasks/*.test.js | tap-spec",
-    "test:integration": "tape ./tests/integration/*.test.js | tap-spec",
-    {{#if nyc}}
-    "test:coverage": "nyc --check-coverage --lines 100 --functions 100 --branches 100 --reporter=html --reporter=text --reporter=text-summary npm run test:unit",
-    {{/if}}
+    {{#if standard}}
     "test:lint": "standard ./lib/**/*.js ./tests/**/*.js"
     {{/if}}
   },
@@ -38,12 +28,7 @@
   },
   "homepage": "{{repository}}#readme",
   "devDependencies": {
-    {{#if tape}}
-    {{#if nyc}}"nyc": "^14.1.1",{{/if}}
-    {{#if nyc}}"sinon": "^7.3.2"{{/if}},
-    "tape": "^4.10.1"
-    {{/if}}
-    {{#if standard}},"standard": "^12.0.1"{{/if}}
+    {{#if standard}}"standard": "^12.0.1"{{/if}}
   },
   "dependencies": {
     "@convenience/create-creator": "^1.0.0"

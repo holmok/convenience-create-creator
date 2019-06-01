@@ -1,6 +1,6 @@
 {
   "name": "@convenience/create-creator",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "a simple to generate node projects.",
   "main": "./lib/index.js",
   "bin": {
