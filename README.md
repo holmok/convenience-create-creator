@@ -5,7 +5,7 @@
 [![Dependency Status](https://david-dm.org/holmok/convenience-create-creator/status.svg)](https://david-dm.org/holmok/convenience-create-creator)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-<img src="https://github.com/holmok/convenience-create-creator/wizard.png" align="right">
+<img src="https://github.com/holmok/convenience-create-creator/blob/master/wizard.png?raw=true" width="180" align="right">
 
 A simple node project generator for creating __create scripts__.
 
