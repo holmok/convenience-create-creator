@@ -1,4 +1,10 @@
-# @convenience/store
+# @convenience/create-creator
+
+[![NPM Version](https://img.shields.io/npm/v/@convenience/create-creator.svg?style=flat-square)](https://www.npmjs.com/package/@convenience/create-creator)
+[![Build Status](https://travis-ci.com/holmok/convenience-create-creator.svg?branch=master)](https://travis-ci.org/holmok/convenience-create-creator)
+[![Dependency Status](https://david-dm.org/holmok/convenience-create-creator/status.svg)](https://david-dm.org/holmok/convenience-create-creator)
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+
 
 A simple node project generator for creating __create scripts__.
 
