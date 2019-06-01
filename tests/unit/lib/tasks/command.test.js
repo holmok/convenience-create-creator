@@ -35,7 +35,7 @@ Tape('command - happy path (with stdout or stderr)', (t) => {
   const commands = [{ cmd: 'ls', args: ['-al'] }]
 
   context.execaMock.expects('sync').once().returns({ stdout: 'stdout', stderr: 'stderr' })
-  context.consoleMock.expects('log').once().returns()
+  context.consoleMock.expects('log').twice().returns()
   context.consoleMock.expects('error').once().returns()
 
   const { command } = require('../../../../lib/tasks/command')
